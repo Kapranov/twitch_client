@@ -19,7 +19,7 @@ bash> ./run.sh
 Git push, pull and log:
 
 ```bash
-bash> git log --pretty="format:%ae|%an|%s"
+bash> make log
 bash> make pull
 bash> make git-"your_commit"
 ```
