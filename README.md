@@ -1,5 +1,7 @@
 # TwitchClient
 
+A client implementation for the Twitch API
+
 **TODO: Add description**
 
 ```bash
@@ -13,7 +15,7 @@ Start and testing application:
 ```bash
 bash> make packs
 bash> make test
-bash> ./run.sh
+bash> make start
 ```
 
 Git push, pull and log:
