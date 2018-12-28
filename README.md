@@ -26,4 +26,10 @@ bash> make pull
 bash> make git-"your_commit"
 ```
 
+Logging application:
+
+```bash
+iex> :observer.start
+```
+
 ### 28 Dec 2018 by Oleg G.Kapranov
