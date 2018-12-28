@@ -15,12 +15,12 @@ STAT_COLOR=\033[2;33m
 help:
 			$(V)echo Please use \'make help\' or \'make ..any_parameters..\'
 
-push:
+git-%:
 			$(V)git add .
-			$(V)git commit -m "added support Makefile"
+			$(V)git commit -m "$(@:git-%=%)"
 			$(V)git push -u origin master
 
-git-%:
+pull:
 			$(V)git pull
 
 kill:
