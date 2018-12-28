@@ -2,7 +2,7 @@ defmodule TwitchClientTest do
   use ExUnit.Case
   doctest TwitchClient
 
-  test "greets the world" do
-    assert TwitchClient.hello() == :world
+  test "the truth" do
+    assert 1 + 1 == 2
   end
 end
