@@ -6,8 +6,9 @@ ELIXIR = elixir
 
 VERSION = $(shell git describe --tags --abbrev=0 | sed 's/^v//')
 
-NO_COLOR=\033[0m
+NO_COLOR=\033[0;0m
 INFO_COLOR=\033[2;32m
+SHOW_COLOR=\033[1;5;31m
 STAT_COLOR=\033[2;33m
 
 # ------------------------------------------------------------------------------
@@ -22,6 +23,13 @@ git-%:
 
 pull:
 			$(V)git pull
+
+log:
+			$(V)clear
+			$(V)echo -e "\n"
+			$(V)echo -e "\t$(SHOW_COLOR) There are commits:$(NO_COLOR) \n"
+			$(V)git log --pretty="format:%ae|%an|%s"
+			$(V)echo -e "\n"
 
 kill:
 			$(V)echo "Checking to see if Erlang process exists:"
@@ -66,4 +74,4 @@ start: kill
 
 all: test credo report start
 
-.PHONY: test halt
+.PHONY: test halt log pull git-%

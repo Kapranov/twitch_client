@@ -16,10 +16,12 @@ bash> make test
 bash> ./run.sh
 ```
 
-Git log the detail an information:
+Git push, pull and log:
 
 ```bash
 bash> git log --pretty="format:%ae|%an|%s"
+bash> make pull
+bash> make git-"your_commit"
 ```
 
 ### 28 Dec 2018 by Oleg G.Kapranov
