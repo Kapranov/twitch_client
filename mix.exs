@@ -33,8 +33,12 @@ defmodule TwitchClient.MixProject do
       {:excoveralls, "~> 0.10.3", only: :test},
       {:ex_doc, "~> 0.19.2", only: :dev},
       {:ex_unit_notifier, "~> 0.1.4", only: :test},
+      {:tesla, "~> 1.2.1"},
+      {:poison, "~> 4.0.1"},
       {:mix_test_watch, "~> 0.9.0", only: :dev, runtime: false},
-      {:remix, "~> 0.0.2", only: :dev}
+      {:mock, "~> 0.3.2", only: :test},
+      {:remix, "~> 0.0.2", only: :dev},
+      {:uuid, "~> 1.1.8", only: :test}
     ]
   end
 
