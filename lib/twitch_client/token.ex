@@ -3,8 +3,8 @@ defmodule TwitchClient.Token do
 
   use Tesla
 
-  @twitch_client_id System.get_env("TWITCH_CLIENT_ID")
-  @twitch_secret System.get_env("TWITCH_SECRET")
+  @twitch_client_id Application.get_env(:twitch_client, :twitch_client_id)
+  @twitch_secret Application.get_env(:twitch_client, :twitch_secret)
 
   plug Tesla.Middleware.BaseUrl, "https://id.twitch.tv/oauth2"
   plug Tesla.Middleware.JSON
