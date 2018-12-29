@@ -1,13 +1,13 @@
 use Mix.Config
 
-if Mix.env == :dev do
-  config :mix_test_watch, clear: true
-  config :remix, escript: true, silent: true
+if Mix.env == :dev && File.exists?("config/dev.secret.exs")do
+  import_config "dev.secret.exs"
+else
+  import_config "dev.secret.template.exs"
 end
 
-if Mix.env == :test do
-  config :ex_unit_notifier,
-    notifier: ExUnitNotifier.Notifiers.NotifySend
+if Mix.env == :test && File.exists?("config/test.secret.exs") do
+  import_config "test.secret.exs"
+else
+  import_config "test.secret.template.exs"
 end
-
-# import_config "#{Mix.env()}.exs"

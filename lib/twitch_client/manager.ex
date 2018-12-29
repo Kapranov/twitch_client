@@ -8,13 +8,15 @@ defmodule TwitchClient.Manager do
 
   def start_link(_opts), do: GenServer.start_link(@name, [], name: @manager)
 
-  def init(_args), do: {:ok, nil}
+  def init(_args) do
+    {:ok, nil}
+  end
 
   def token do
     GenServer.call(@manager, :token)
   end
 
-  def handle_call(:token, _from, state) do
-    {:reply, {:ok, state}, state}
+  def handle_call(:token, _from, token) do
+    {:reply, {:ok, token}, token}
   end
 end

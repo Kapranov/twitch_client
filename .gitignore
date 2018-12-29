@@ -6,3 +6,5 @@
 erl_crash.dump
 *.ez
 twitch_client-*.tar
+config/dev.secret.exs
+config/test.secret.exs
