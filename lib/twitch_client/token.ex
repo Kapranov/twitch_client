@@ -10,7 +10,12 @@ defmodule TwitchClient.Token do
   plug Tesla.Middleware.JSON
 
   def create do
-    %Tesla.Env{body: %{"access_token" => token, "expires_in" => expiration_in_seconds}} = post("token?client_id=" <> @twitch_client_id <> "&client_secret=" <> @twitch_secret <> "&grant_type=client_credentials", "")
+    %Tesla.Env{
+      body: %{
+        "access_token" => token,
+        "expires_in" => expiration_in_seconds
+      }
+    } = post("token?client_id=" <> @twitch_client_id <> "&client_secret=" <> @twitch_secret <> "&grant_type=client_credentials", "")
     %{token: token, expires_in: expiration_in_seconds * 1000}
   end
 end
