@@ -12,6 +12,6 @@ defmodule TwitchClient.ManagerTest do
   test "should return the token" do
     {:ok, token} = Manager.token()
 
-    assert token == nil
+    assert String.length(token) == 30
   end
 end
