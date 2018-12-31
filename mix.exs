@@ -39,7 +39,7 @@ defmodule TwitchClient.MixProject do
       {:mix_test_watch, "~> 0.9.0", only: :dev, runtime: false},
       {:mock, "~> 0.3.2", only: :test},
       {:remix, "~> 0.0.2", only: :dev},
-      {:uuid, "~> 1.1.8", only: :test}
+      {:elixir_uuid, "~> 1.2", only: :test}
     ]
   end
 
