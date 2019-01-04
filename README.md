@@ -28,3 +28,7 @@ Logging application:
 iex> :observer.start
 ```
 ### 30 Dec 2018 by Oleg G.Kapranov
+
+[1]: https://dev.twitch.tv/docs/v5/
+[2]: https://dev.twitch.tv/docs/api/reference/#get-users
+[3]: https://dev.twitch.tv/docs/api/reference/#get-videos
