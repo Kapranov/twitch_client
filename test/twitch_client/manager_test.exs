@@ -1,10 +1,10 @@
 defmodule TwitchClient.ManagerTest do
   use ExUnit.Case, async: true
 
-  # import Mock
+  import Mock
 
-  # alias TwitchClient.Token
   alias TwitchClient.Manager
+  alias TwitchClient.Token
 
   setup do
     start_supervised Manager
@@ -18,18 +18,18 @@ defmodule TwitchClient.ManagerTest do
     assert String.length(token) == 30
   end
 
-  test "should renew an expired token" do
-    # with_mock Token, [create: &random_token/0] do
-    #   {:ok, new_token} = Manager.token()
-    #   Process.sleep(2000)
+  test "should renew an expired token from another module" do
+    with_mock Token, [:passthrough], [create: &random_token/0] do
+      {:ok, token1} = Manager.token()
+      Process.sleep(2_000)
 
-    #   {:ok, renew_token} = Manager.token()
+      {:ok, token2} = Manager.token()
 
-    #   assert renew_token != new_token
-    # end
+      assert token2 != token1
+    end
   end
 
-  # defp random_token do
-  #   %{token: UUID.uuid1(:hex), expires_in: 1000}
-  # end
+  defp random_token do
+    %{token: UUID.uuid1(:hex), expires_in: 1000}
+  end
 end

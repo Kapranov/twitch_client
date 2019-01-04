@@ -46,7 +46,6 @@ packs:
 			$(V)mix deps.get
 
 report:
-			$(V)MIX_ENV=dev
 			$(V)mix coveralls
 			$(V)mix coveralls.detail
 			$(V)mix coveralls.html
@@ -59,7 +58,6 @@ test:
 
 credo:
 			$(V)mix credo --strict
-			$(V)mix coveralls
 
 run: kill clean packs
 			$(V)iex -S mix
@@ -72,6 +70,6 @@ start: kill
 			$(V)echo -en "\n\t$(STAT_COLOR) Run server http://localhost:$(NO_COLOR)$(INFO_COLOR)PORT$(NO_COLOR)\n"
 			$(V)iex -S mix
 
-all: test credo report start
+all: test credo start
 
 .PHONY: test halt log pull git-%
