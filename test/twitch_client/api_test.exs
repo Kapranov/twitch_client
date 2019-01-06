@@ -5,6 +5,7 @@ defmodule TwitchClient.APITest do
   alias TwitchClient.Manager
 
   @login1 "josevalim"
+  @login2 "lugatex"
 
   setup do
     start_supervised Manager
@@ -16,6 +17,13 @@ defmodule TwitchClient.APITest do
       {:ok, users} = API.users(login: [@login1])
 
       assert contains?(users, @login1)
+    end
+
+    test "find users by their logins" do
+      {:ok, users} = API.users(login: [@login1, @login2])
+
+      assert contains?(users, @login1)
+      assert contains?(users, @login2)
     end
   end
 
