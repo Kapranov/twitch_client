@@ -8,7 +8,6 @@ defmodule TwitchClient.ManagerTest do
 
   setup do
     start_supervised Manager
-
     %{}
   end
 

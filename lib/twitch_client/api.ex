@@ -9,8 +9,15 @@ defmodule TwitchClient.API do
   plug Tesla.Middleware.JSON
 
   def users(opts) do
-    login_tuples = Keyword.get(opts, :login) |> to_tuples("login")
-    id_tuples = Keyword.get(opts,:id) |> to_tuples("id")
+    login_tuples =
+      opts
+      |> Keyword.get(:login)
+      |> to_tuples("login")
+
+    id_tuples =
+      opts
+      |> Keyword.get(:id)
+      |> to_tuples("id")
 
     data =
       read_token()
@@ -28,7 +35,7 @@ defmodule TwitchClient.API do
 
   defp build_client(token) do
     Tesla.client [
-      {Tesla.Middleware.Headers, %{"Authorization" => "Bearer " <> token}}
+      {Tesla.Middleware.Headers, [{"Authorization", "Bearer " <> token}]}
     ]
   end
 
@@ -36,6 +43,7 @@ defmodule TwitchClient.API do
 
   defp to_tuples(nil, _tuple_key), do: []
   defp to_tuples(list, tuple_key), do: Enum.map(list, & {tuple_key, &1})
+
   defp to_query_parameters(list) do
     list
     |> Enum.map(fn({key, value}) -> key <> "=" <> value end)

@@ -1,23 +1,21 @@
 defmodule TwitchClient.APITest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   alias TwitchClient.API
   alias TwitchClient.Manager
 
-  #@user_id "273547308"
-  @user_name "josevalim"
+  @login1 "josevalim"
 
   setup do
     start_supervised Manager
-
     %{}
   end
 
   describe "#users" do
     test "find user by its login" do
-      {:ok, users} = API.users(login: [@user_name])
+      {:ok, users} = API.users(login: [@login1])
 
-      assert contains?(users, @user_name)
+      assert contains?(users, @login1)
     end
   end
 
