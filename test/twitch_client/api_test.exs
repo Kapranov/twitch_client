@@ -40,6 +40,13 @@ defmodule TwitchClient.APITest do
       assert contains?(users, @login1)
       assert contains?(users, @login2)
     end
+
+    test "find users by both their logins and ids" do
+      {:ok, users} = API.users(login: [@login1], id: [@login2_id])
+
+      assert contains?(users, @login1)
+      assert contains?(users, @login2)
+    end
   end
 
   defp contains?(users, login) do
