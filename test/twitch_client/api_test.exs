@@ -7,6 +7,7 @@ defmodule TwitchClient.APITest do
   @login1 "josevalim"
   @login2 "lugatex"
   @login1_id "273547308"
+  @login2_id "276568322"
 
   setup do
     start_supervised Manager
@@ -31,6 +32,13 @@ defmodule TwitchClient.APITest do
       {:ok, users} = API.users(id: [@login1_id])
 
       assert contains?(users, @login1)
+    end
+
+    test "find users by their ids" do
+      {:ok, users} = API.users(id: [@login1_id, @login2_id])
+
+      assert contains?(users, @login1)
+      assert contains?(users, @login2)
     end
   end
 
