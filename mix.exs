@@ -33,6 +33,7 @@ defmodule TwitchClient.MixProject do
       {:excoveralls, "~> 0.10.3", only: :test},
       {:ex_doc, "~> 0.19.2", only: :dev},
       {:ex_unit_notifier, "~> 0.1.4", only: :test},
+      {:hackney, "~> 1.14.0"},
       {:jason, "~> 1.1.2"},
       {:tesla, "~> 1.2.1"},
       {:poison, "~> 4.0.1"},

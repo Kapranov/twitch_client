@@ -20,7 +20,7 @@ defmodule TwitchClient.ManagerTest do
   test "should renew an expired token from another module" do
     with_mock Token, [:passthrough], [create: &random_token/0] do
       {:ok, token1} = Manager.token()
-      Process.sleep(2_000)
+      Process.sleep(3_000)
 
       {:ok, token2} = Manager.token()
 
