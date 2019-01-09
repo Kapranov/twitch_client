@@ -120,7 +120,31 @@ iex> TwitchClient.Token.create
 #=> #=> %{expires_in: 5320374000, token: "pylwgejgrxhykwbniou8h8eo81m6oz"}
 ```
 
-### 30 Dec 2018 by Oleg G.Kapranov
+# How to Use IEx.pry in Elixir Tests
+
+```iex
+ExUnit.start()
+
+defmodule Calc do
+  def add(a,b) do
+    a + b
+  end
+end
+
+defmodule TheTest do
+  use ExUnit.Case
+
+  test "adds two numbers" do
+    require IEx; IEx.pry
+    assert Calc.add(1, 2) == 3
+  end
+end
+
+ExUnit.Server.modules_loaded()
+ExUnit.run()
+```
+
+### 9 Jan 2019 by Oleg G.Kapranov
 
 [1]: https://dev.twitch.tv/docs/v5/
 [2]: https://dev.twitch.tv/docs/api/reference/#get-users
